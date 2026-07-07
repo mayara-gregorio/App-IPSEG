@@ -6,41 +6,33 @@ import "../styles/globals.css"
 import "../styles/index.css"
 import "../styles/tailwind.css"
 
-
+import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import {
   Menu, X, ChevronDown, Mail, Phone, MapPin, ArrowRight,
-  Cloud, Brain, Users, Shield, Layers, Database, IceCream,
+  Cloud, Brain, Users, Lightbulb, Layers, Database,
   Smartphone, Monitor,
 } from "lucide-react";
+
 
 const slides = [
   {
     id: 0,
-    tag: "Nuvem",
+    tag: "IPSEG",
     headline: "Monitoramento Inteligente em Nuvem",
     sub: "Acesse suas câmeras em tempo real de qualquer dispositivo, em qualquer lugar — sem servidores locais, sem complicação.",
     cta: "Acessar Minhas Câmeras",
     ctaHref: "https://cloud.ipseg.com.br",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&h=900&fit=crop&auto=format",
+    image: "/imagem01.svg",
   },
   {
     id: 1,
-    tag: "Inteligência Artificial",
+    tag: "IPSEG Smart",
     headline: "IA que Detecta, Você Decide",
     sub: "Detecção automática de eventos suspeitos para otimizar sua equipe e reduzir falsos alarmes com precisão de ponta.",
     cta: "Conhecer os Serviços",
     ctaHref: "#servicos",
     image: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1600&h=900&fit=crop&auto=format",
-  },
-  {
-    id: 2,
-    tag: "Colaborativo",
-    headline: "Segurança sem Fronteiras",
-    sub: "Compartilhe câmeras com autoridades, vizinhos e parceiros para criar uma rede de proteção coletiva e eficiente.",
-    cta: "Quero Ser Parceiro",
-    ctaHref: "#contato",
-    image: "https://images.unsplash.com/photo-1573164574572-cb89e39749b4?w=1600&h=900&fit=crop&auto=format",
   },
 ];
 
@@ -48,31 +40,31 @@ const slides = [
 const services = [
   {
     icon: Cloud,
-    title: "Monitoramento em Nuvem",
-    desc: "Acesso em tempo real de qualquer dispositivo. Armazenamento seguro e escalável — sem servidores locais, sem custo de infraestrutura.",
-    features: ["Acesso remoto 24h", "Armazenamento escalável", "Sem servidor local"],
+    title: "IPSEG",
+    desc: "Acesse suas câmeras com o menor delay do mercado de qualquer dispositivo.",
+    features: ["Acesso remoto 24h", "Acesso pelo Aplicativo IPSEG", "Armazenamento escalável"],
   },
   {
     icon: Brain,
-    title: "Inteligência Artificial",
-    desc: "Detecção automática de eventos suspeitos. A IA filtra os alertas para que sua equipe foque no que realmente importa.",
-    features: ["Detecção de eventos", "Redução de falsos alarmes", "Alertas em tempo real"],
+    title: "ISPEG Smart",
+    desc: "Detecção de movimento com notificações direto no seu celular.",
+    features: ["Detecção de movimentos", "Acesso pelo Aplicativo IPSEG Smart", "Captura do incidente"],
   },
   {
     icon: Users,
-    title: "Monitoramento Colaborativo",
-    desc: "Compartilhe câmeras com autoridades, vizinhos e parceiros. Construa uma rede de segurança coletiva e eficiente.",
-    features: ["Compartilhamento seguro", "Integração com autoridades", "Rede colaborativa"],
+    title: "Automonitoramento Colaborativo",
+    desc: "Compartilhe câmeras com vizinhos. Construa uma rede de segurança coletiva e eficiente.",
+    features: ["Compartilhamento de Câmeras", "+ Segurança", "Rede colaborativa"],
   },
 ];
 
 /* ─── Features ────────────────────────────────────────────────────── */
 const features = [
-  { icon: Cloud, label: "Monitoramento 100% em nuvem" },
-  { icon: Layers, label: "Integração com câmeras IP" },
+  { icon: Cloud, label: "Armazenamento 100% em nuvem" },
+  { icon: Layers, label: "Integração com diversas câmeras IP" },
   { icon: Database, label: "Armazenamento seguro e escalável" },
   { icon: Brain, label: "IA para detecção eficiente" },
-  { icon: Shield, label: "Segurança de dados certificada" },
+  { icon: Lightbulb, label: "Integração com diversos dispositivos de automação" },
   { icon: Monitor, label: "Acesso de qualquer dispositivo" },
 ];
 
@@ -149,6 +141,7 @@ export default function App() {
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "bg-background/95 backdrop-blur-md border-b border-border" : "bg-transparent"}`}>
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between py-4">
           <button onClick={() => scrollTo("inicio")}>
+            <Image src="/logoipseg.svg" alt="IPSEG" width={160} height={40} className="w-40 h-auto" />
           </button>
 
           <ul className="hidden md:flex items-center gap-8">
@@ -211,7 +204,7 @@ export default function App() {
         {slides.map((s, i) => (
           <div key={s.id} className="absolute inset-0 transition-opacity duration-1000"
             style={{ opacity: i === current ? 1 : 0 }}>
-            <img src={s.image} alt={s.headline} className="w-full h-full object-cover" />
+            <Image src={s.image} alt={s.headline} fill className="object-cover" unoptimized priority={i === 0} />
             <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
           </div>
@@ -349,10 +342,10 @@ export default function App() {
                 Profissionalismo e Confiança
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-6">
-                A IPSEG é especializada em soluções de monitoramento inteligente. Nossa missão é oferecer um sistema de monitoramento em nuvem inovador que garanta segurança e praticidade para empresas, condomínios e cidades.
+                A IPSEG é uma empresa especializada em soluções de automonitoramento inteligente. ​​Nossa missão é oferecer soluções inovadoras de segurança, garantindo praticidade para empresas, condomínios e cidades.
               </p>
               <p className="text-muted-foreground leading-relaxed mb-10">
-                Nossos parceiros podem adicionar um VMS robusto ao seu portfólio e gerar novas receitas, expandindo seus negócios com tecnologia de ponta e suporte especializado.
+                Seja um parceiro IPSEG e adicione sistemas robustos ao seu portfólio e gere novas receitas.
               </p>
               <button
                 onClick={() => scrollTo("contato")}
@@ -549,8 +542,8 @@ export default function App() {
       <div className="border-t border-border py-10 bg-background">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-8">
-            <img src="C:\Users\InfoPlus\Desktop\Projedtos Dev\app-ipseg\public\Página 2.png" alt="IPSEG" className="h-8 w-auto object-contain" />
-            <div className="flex flex-wrap justify-center gap-8"/>
+            <Image src="/logoipseg.svg" alt="IPSEG" width={120} height={32} className="h-8 w-auto object-contain" />
+            <div className="flex flex-wrap justify-center gap-8">
               {navLinks.map((l) => (
                 <button key={l.id} onClick={() => scrollTo(l.id)}
                   className="text-xs text-muted-foreground hover:text-foreground transition-colors tracking-wide uppercase">
@@ -560,6 +553,7 @@ export default function App() {
             </div>
             <a href="https://www.instagram.com/ipseg.solucoes/" target="_blank" rel="noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors">
+              @ipseg.solucoes
             </a>
           </div>
           <div className="border-t border-border pt-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
@@ -572,5 +566,6 @@ export default function App() {
           </div>
         </div>
       </div>
+    </div>
   );
 }
