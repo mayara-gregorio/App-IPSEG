@@ -19,7 +19,7 @@ const slides = [
   {
     id: 0,
     tag: "IPSEG",
-    headline: "Monitoramento Inteligente em Nuvem",
+    headline: "Soluções em Segurança Inteligente",
     sub: "Acesse suas câmeras em tempo real de qualquer dispositivo, em qualquer lugar — sem servidores locais, sem complicação.",
     cta: "Acessar Minhas Câmeras",
     ctaHref: "https://cloud.ipseg.com.br",
@@ -32,7 +32,7 @@ const slides = [
     sub: "Detecção automática de eventos suspeitos para otimizar sua equipe e reduzir falsos alarmes com precisão de ponta.",
     cta: "Conhecer os Serviços",
     ctaHref: "#servicos",
-    image: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1600&h=900&fit=crop&auto=format",
+    image: "/imagem01.svg",
   },
 ];
 
@@ -98,14 +98,14 @@ export default function App() {
 
   /* Auto-advance slides every 2s */
   useEffect(() => {
-    intervalRef.current = setInterval(() => setCurrent((c) => (c + 1) % slides.length), 3000);
+    intervalRef.current = setInterval(() => setCurrent((c) => (c + 1) % slides.length), 5000);
     return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
   }, []);
 
   const goTo = (i: number) => {
     if (intervalRef.current) clearInterval(intervalRef.current);
     setCurrent(i);
-    intervalRef.current = setInterval(() => setCurrent((c) => (c + 1) % slides.length), 3000);
+    intervalRef.current = setInterval(() => setCurrent((c) => (c + 1) % slides.length), 5000);
   };
 
   const scrollTo = (id: string) => {
@@ -160,8 +160,8 @@ export default function App() {
           <div className="hidden md:flex items-center gap-3">
             <button
               onClick={() => window.open("https://cloud.ipseg.com.br", "_blank")}
-              className="text-sm px-4 py-2 rounded-sm border transition-all duration-200 hover:bg-primary hover:text-primary-foreground hover:border-primary"
-              style={{ borderColor: "var(--primary)", color: "var(--primary)" }}
+              className="text-sm px-4 py-2 rounded-sm border transition-all duration-200 text-[var(--primary)] hover:bg-primary hover:text-primary-foreground hover:border-primary"
+              style={{ borderColor: "var(--primary)"}}
             >
               Acessar Câmeras
             </button>
@@ -211,46 +211,73 @@ export default function App() {
         ))}
 
         {/* Content */}
-        <div className="relative z-10 h-full flex flex-col justify-center max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="max-w-2xl" style={{ minHeight: "280px", position: "relative" }}>
-            {slides.map((s, i) => (
-              <div key={s.id} className="absolute top-0 left-0 w-full transition-all duration-700"
-                style={{
-                  opacity: i === current ? 1 : 0,
-                  transform: i === current ? "translateY(0)" : "translateY(24px)",
-                  pointerEvents: i === current ? "auto" : "none",
-                }}>
-                <span className="inline-block text-xs font-600 tracking-[0.2em] uppercase mb-5 px-3 py-1 border rounded-sm"
-                  style={{ color: "var(--primary)", borderColor: "var(--primary)" }}>
-                  {s.tag}
-                </span>
-                <h1 className="font-['Playfair_Display',serif] text-4xl md:text-6xl font-700 leading-tight mb-6 text-foreground">
-                  {s.headline}
-                </h1>
-                <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-10 max-w-xl">
-                  {s.sub}
-                </p>
-                <div className="flex flex-wrap gap-4">
-                  <button
-                    onClick={() => handleCta(s.ctaHref)}
-                    className="inline-flex items-center gap-3 px-8 py-3.5 text-sm font-500 tracking-wide transition-all duration-200 hover:gap-5 rounded-sm"
-                    style={{ background: "var(--primary)", color: "var(--primary-foreground)" }}>
-                    {s.cta} <ArrowRight size={16} />
-                  </button>
-                  {i === 0 && (
-                    <button
-                      onClick={() => scrollTo("servicos")}
-                      className="inline-flex items-center gap-2 px-6 py-3.5 text-sm border rounded-sm transition-colors hover:bg-secondary"
-                      style={{ borderColor: "rgba(61,214,56,0.3)", color: "var(--foreground)" }}>
-                      Ver Serviços
-                    </button>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+      <div className="relative z-10 h-full flex flex-col justify-center max-w-7xl mx-auto px-6 lg:px-12">
+        <div style={{ minHeight: "280px", position: "relative" }}>
+          {slides.map((s, i) => {
+            const isActive = i === current;
+            const isSideLayout = i === 1; // slide 02 -> texto + imagem lado a lado
 
+            return (
+              <div
+                key={s.id}
+                className={`absolute top-0 left-0 w-full transition-all duration-700 ${
+                  isSideLayout ? "flex flex-row items-center gap-12" : ""
+                }`}
+                style={{
+                  opacity: isActive ? 1 : 0,
+                  transform: isActive ? "translateY(0)" : "translateY(24px)",
+                  pointerEvents: isActive ? "auto" : "none",
+                }}
+              >
+                {/* Texto (sempre presente) */}
+                <div className={isSideLayout ? "flex-1 max-w-xl" : "max-w-2xl"}>
+                  <span
+                    className="inline-block text-xs font-600 tracking-[0.2em] uppercase mb-5 px-3 py-1 border rounded-sm"
+                    style={{ color: "var(--primary)", borderColor: "var(--primary)" }}
+                  >
+                    {s.tag}
+                  </span>
+                  <h1 className="font-['Playfair_Display',serif] text-4xl md:text-6xl font-700 leading-tight mb-6 text-foreground">
+                    {s.headline}
+                  </h1>
+                  <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-10 max-w-xl">
+                    {s.sub}
+                  </p>
+                  <div className="flex flex-wrap gap-4">
+                    <button
+                      onClick={() => handleCta(s.ctaHref)}
+                      className="inline-flex items-center gap-3 px-8 py-3.5 text-sm font-500 tracking-wide transition-all duration-200 hover:gap-5 rounded-sm"
+                      style={{ background: "var(--primary)", color: "var(--primary-foreground)" }}
+                    >
+                      {s.cta} <ArrowRight size={16} />
+                    </button>
+                    {i === 0 && (
+                      <button
+                        onClick={() => scrollTo("servicos")}
+                        className="inline-flex items-center gap-2 px-6 py-3.5 text-sm border rounded-sm transition-colors hover:bg-secondary"
+                        style={{ borderColor: "rgba(61,214,56,0.3)", color: "var(--foreground)" }}
+                      >
+                        Ver Serviços
+                      </button>
+                    )}
+                  </div>
+                </div>
+
+                {/* Imagem lateral só nesse slide */}
+                {isSideLayout && (
+                  <div className="hidden md:block flex-1 relative h-[300px]">
+                    <img
+                      src="/imageipsegsmart.svg"
+                      alt="Imagem de Um celular"
+                      className="w-* h-*"
+                    />
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
         {/* Dots */}
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex gap-3">
           {slides.map((_, i) => (
