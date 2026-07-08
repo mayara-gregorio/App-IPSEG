@@ -32,7 +32,7 @@ const slides = [
     sub: "Detecção automática de eventos suspeitos para otimizar sua equipe e reduzir falsos alarmes com precisão de ponta.",
     cta: "Conhecer os Serviços",
     ctaHref: "#servicos",
-    image: "/imagem01.svg",
+    image: "/arteteste.svg",
   },
 ];
 
@@ -135,7 +135,7 @@ export default function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-['Inter',sans-serif] overflow-x-hidden">
+    <div className="min-h-screen bg-background text-foreground font-sans overflow-x-hidden">
 
       {/* ── NAV ─────────────────────────────────────────────────────── */}
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "bg-background/95 backdrop-blur-md border-b border-border" : "bg-transparent"}`}>
