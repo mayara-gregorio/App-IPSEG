@@ -18,21 +18,19 @@ import {
 const slides = [
   {
     id: 0,
-    tag: "IPSEG",
-    headline: "Soluções em Segurança Inteligente",
-    sub: "Acesse suas câmeras em tempo real de qualquer dispositivo, em qualquer lugar — sem servidores locais, sem complicação.",
+    headline: "Banner com a frase Soluções em Segurança Inteligente",
     cta: "Acessar Minhas Câmeras",
     ctaHref: "https://cloud.ipseg.com.br",
-    image: "/imagem01.svg",
+    image: "/IPSEG Smart - Desktop.svg",
+    imageMobile: "/IPSEG Smart - Mobile.svg",
   },
   {
     id: 1,
-    tag: "IPSEG Smart",
-    headline: "IA que Detecta, Você Decide",
-    sub: "Detecção automática de eventos suspeitos para otimizar sua equipe e reduzir falsos alarmes com precisão de ponta.",
-    cta: "Conhecer os Serviços",
+    headline: "Segurança e automação inteligente na palma da sua mão. Monitore e automatize sua casa você mesmo de onde estiver, com total praticidade e controle.",
+    cta: "Saber Mais Sobre",
     ctaHref: "#servicos",
-    image: "/arteteste.svg",
+    image: "/IPSEG Smart - Desktop.svg",
+    imageMobile: "/IPSEG Smart - Mobile.svg",
   },
 ];
 
@@ -42,13 +40,13 @@ const services = [
     icon: Cloud,
     title: "IPSEG",
     desc: "Acesse suas câmeras com o menor delay do mercado de qualquer dispositivo.",
-    features: ["Acesso remoto 24h", "Acesso pelo Aplicativo IPSEG", "Armazenamento escalável"],
+    features: ["Armazenamento em Nuvem", "Acesso pelo Aplicativo IPSEG", "Armazenamento escalável"],
   },
   {
     icon: Brain,
     title: "ISPEG Smart",
     desc: "Detecção de movimento com notificações direto no seu celular.",
-    features: ["Detecção de movimentos", "Acesso pelo Aplicativo IPSEG Smart", "Captura do incidente"],
+    features: ["Detecção de movimentos", "Acesso pelo Aplicativo IPSEG Smart", "Captura de Incidentes"],
   },
   {
     icon: Users,
@@ -70,10 +68,11 @@ const features = [
 
 /* ─── Partners ─────────────────────────────────────────────────────── */
 const partners = [
-  { name: "RR Informática", abbr: "RR", sector: "Tecnologia" },
-  { name: "Tcnosat", abbr: "TC", sector: "Conectividade" },
-  { name: "Diney Infor", abbr: "DI", sector: "Informática" },
-  { name: "D-UP Digital", abbr: "DD", sector: "Marketing Digital" },
+  { name: "Diney Infor", logo: "/Logo Diney Infor.png"},
+  { name: "Infoplus Fiber", logo: "/Logo Infoplus.png"},
+  { name: "RR Informática", logo: "/Logo RR.png"},
+  { name: "SOF Telecom", logo: "/Logo SOF Telecom.png"},
+  { name: "Tcnosat", logo: "/Logo Tcnosat.png"},
 ];
 
 /* ─── Hook ─────────────────────────────────────────────────────────── */
@@ -144,7 +143,7 @@ export default function App() {
             <Image src="/logoipseg.svg" alt="IPSEG" width={160} height={40} className="w-40 h-auto" />
           </button>
 
-          <ul className="hidden md:flex items-center gap-8">
+          <ul className="hidden lg:flex items-center gap-8">
             {navLinks.map((l) => (
               <li key={l.id}>
                 <button
@@ -157,7 +156,7 @@ export default function App() {
             ))}
           </ul>
 
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-3">
             <button
               onClick={() => window.open("https://cloud.ipseg.com.br", "_blank")}
               className="text-sm px-4 py-2 rounded-sm border transition-all duration-200 text-[var(--primary)] hover:bg-primary hover:text-primary-foreground hover:border-primary"
@@ -174,13 +173,13 @@ export default function App() {
             </button>
           </div>
 
-          <button className="md:hidden text-foreground" onClick={() => setMenuOpen(!menuOpen)}>
+          <button className="lg:hidden text-foreground" onClick={() => setMenuOpen(!menuOpen)}>
             {menuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
 
         {menuOpen && (
-          <div className="md:hidden bg-card border-t border-border px-6 py-6 flex flex-col gap-5">
+          <div className="lg:hidden bg-card border-t border-border px-6 py-6 flex flex-col gap-5">
             {navLinks.map((l) => (
               <button key={l.id} onClick={() => scrollTo(l.id)}
                 className="text-left text-sm tracking-wide text-muted-foreground hover:text-foreground transition-colors">
@@ -199,20 +198,33 @@ export default function App() {
       </nav>
 
       {/* ── INÍCIO / HERO ────────────────────────────────────────────── */}
-      <section id="inicio" className="relative h-screen min-h-[620px] overflow-hidden">
-        {/* Slides */}
+      <section id="inicio" className="relative h-screen min-h-[620px] overflow-hidden"
+        style={{ background: "var(--backgreen)" }}>
         {slides.map((s, i) => (
-          <div key={s.id} className="absolute inset-0 transition-opacity duration-1000"
-            style={{ opacity: i === current ? 1 : 0 }}>
-            <Image src={s.image} alt={s.headline} fill className="object-cover" unoptimized priority={i === 0} />
-            {s.id === 0 && (
-              <>
-            <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
-              </>
-              )}
-            </div>
-        ))}
+        <div key={s.id} className="absolute inset-0 transition-opacity duration-1000"
+          style={{ opacity: i === current ? 1 : 0 }}>
+
+          {/* Desktop */}
+          <Image
+            src={s.image}
+            alt={s.headline}
+            fill
+            className="object-cover hidden lg:block"
+            unoptimized
+            priority={i === 0}
+          />
+
+          {/* Mobile */}
+          <Image
+            src={s.imageMobile}
+            alt={s.headline}
+            fill
+            className="object-cover object-center max-sm:object-contain max-md:py-10 lg:hidden"
+            unoptimized
+            priority={i === 0}
+          />
+        </div>
+      ))}
 
         {/* Content */}
       <div className="relative z-10 h-full flex flex-col justify-center max-w-7xl mx-auto px-6 lg:px-12">
@@ -235,22 +247,10 @@ export default function App() {
               >
                 {/* Texto (sempre presente) */}
                 <div className={isSideLayout ? "flex-1 max-w-xl" : "max-w-2xl"}>
-                  <span
-                    className="inline-block text-xs font-600 tracking-[0.2em] uppercase mb-5 px-3 py-1 border rounded-sm"
-                    style={{ color: "var(--primary)", borderColor: "var(--primary)" }}
-                  >
-                    {s.tag}
-                  </span>
-                  <h1 className="font-['Playfair_Display',serif] text-4xl md:text-6xl font-700 leading-tight mb-6 text-foreground">
-                    {s.headline}
-                  </h1>
-                  <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-10 max-w-xl">
-                    {s.sub}
-                  </p>
-                  <div className="flex flex-wrap gap-4">
+                  <div className="flex flex-col lg:flex-row lg:flex-wrap gap-4 mt-60 lg:mt-80">
                     <button
                       onClick={() => handleCta(s.ctaHref)}
-                      className="inline-flex items-center gap-3 px-8 py-3.5 text-sm font-500 tracking-wide transition-all duration-200 hover:gap-5 rounded-sm"
+                      className="inline-flex w-70 items-center gap-3 px-8 py-3.5 text-sm font-500 tracking-wide transition-all duration-200 hover:gap-5 rounded-sm"
                       style={{ background: "var(--primary)", color: "var(--primary-foreground)" }}
                     >
                       {s.cta} <ArrowRight size={16} />
@@ -258,25 +258,14 @@ export default function App() {
                     {i === 0 && (
                       <button
                         onClick={() => scrollTo("servicos")}
-                        className="inline-flex items-center gap-2 px-6 py-3.5 text-sm border rounded-sm transition-colors hover:bg-secondary"
+                        className="inline-flex w-70 items-center gap-2 px-6 py-3.5 text-sm border rounded-sm transition-colors hover:bg-secondary"
                         style={{ borderColor: "rgba(61,214,56,0.3)", color: "var(--foreground)" }}
                       >
-                        Ver Serviços
+                        Quero Ser Parceiro
                       </button>
                     )}
                   </div>
                 </div>
-
-                {/* Imagem lateral só nesse slide */}
-                {isSideLayout && (
-                  <div className="hidden md:block flex-1 relative h-[300px]">
-                    <img
-                      src="/imageipsegsmart.svg"
-                      alt="Imagem de Um celular"
-                      className="w-* h-*"
-                    />
-                  </div>
-                )}
               </div>
             );
           })}
@@ -405,14 +394,16 @@ export default function App() {
       </section>
 
       {/* ── PARCEIROS ────────────────────────────────────────────────── */}
-      <section id="parceiros" className="py-28 bg-background">
+      <section id="parceiros" className="py-28 bg-background"
+      style={{background: "var(--foreground)"}}>
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="text-center mb-16">
             <span className="text-xs font-600 tracking-[0.2em] uppercase mb-4 block"
               style={{ color: "var(--primary)" }}>
               Parceiros IPSEG
             </span>
-            <h2 className="font-['Playfair_Display',serif] text-4xl md:text-5xl font-700 leading-tight mb-4">
+            <h2 className="font-['Playfair_Display',serif] text-4xl md:text-5xl font-700 leading-tight mb-4"
+            style={{ color: "var(--background)" }}>
               Quem Cresce com a Gente
             </h2>
             <p className="text-muted-foreground max-w-lg mx-auto text-sm leading-relaxed">
@@ -420,34 +411,34 @@ export default function App() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border mb-16">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-px bg-foreground mb-16">
             {partners.map((p) => (
               <div key={p.name}
-                className="bg-card p-10 flex flex-col items-center text-center gap-4 hover:bg-secondary transition-colors duration-300 cursor-default">
-                <div className="w-14 h-14 rounded-sm flex items-center justify-center text-sm font-700"
-                  style={{ background: "var(--primary)", color: "var(--primary-foreground)" }}>
-                  {p.abbr}
-                </div>
-                <div>
-                  <div className="font-500 text-sm text-foreground">{p.name}</div>
-                  <div className="text-xs text-muted-foreground mt-1">{p.sector}</div>
+                className="bg-foreground p-10 flex flex-col items-center text-center gap-4 hover:bg-foreground transition-colors duration-300 cursor-default">
+                <div className="relative w-full h-16">
+                  <Image
+                    src={p.logo}
+                    alt={p.name}
+                    fill
+                    className="object-contain w-full h-full"
+                    unoptimized
+                  />
                 </div>
               </div>
             ))}
           </div>
-
-          {/* CTA to become partner */}
-          <div className="bg-card border border-border rounded-sm p-12 md:p-16 text-center"
-            style={{ borderColor: "rgba(61,214,56,0.2)" }}>
+        </div>
+            <div className="border border-border rounded-sm p-12 md:p-16 text-center"
+            style={{ borderColor: "rgba(61,214,56,0.2)", background: "var(--backgreen)" }}>
             <span className="text-xs font-600 tracking-[0.2em] uppercase mb-4 block"
               style={{ color: "var(--primary)" }}>
               Para Provedores e Integradores
             </span>
             <h3 className="font-['Playfair_Display',serif] text-3xl md:text-4xl font-700 mb-4">
-              Adicione o IPSEG ao Seu Portfólio
+              Adicione a IPSEG ao Seu Portfólio
             </h3>
             <p className="text-muted-foreground max-w-md mx-auto mb-8 text-sm leading-relaxed">
-              Ofereça monitoramento em nuvem aos seus clientes, gere novas receitas recorrentes e se diferencie no mercado com tecnologia de ponta.
+              Ofereça automonitoramento em nuvem, sistema de segurança e automações residenciais aos seus clientes, gere novas receitas recorrentes e se diferencie no mercado com tecnologia de ponta.
             </p>
             <button
               onClick={() => scrollTo("contato")}
@@ -456,7 +447,6 @@ export default function App() {
               Quero Ser Parceiro <ArrowRight size={16} />
             </button>
           </div>
-        </div>
       </section>
 
       {/* ── CONTATO ──────────────────────────────────────────────────── */}
