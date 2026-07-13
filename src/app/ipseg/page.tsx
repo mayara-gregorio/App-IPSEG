@@ -14,7 +14,6 @@ import {
   Smartphone, Monitor,
 } from "lucide-react";
 
-
 const slides = [
   {
     id: 0,
@@ -72,7 +71,6 @@ const partners = [
   { name: "Tcnosat", logo: "/Logo Tcnosat.png"},
 ];
 
-/* ─── Hook ─────────────────────────────────────────────────────────── */
 function useScrolled() {
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
@@ -91,7 +89,6 @@ export default function App() {
   const scrolled = useScrolled();
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  /* Auto-advance slides every 2s */
   useEffect(() => {
     intervalRef.current = setInterval(() => setCurrent((c) => (c + 1) % slides.length), 5000);
     return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
@@ -132,7 +129,6 @@ export default function App() {
   return (
     <div className="min-h-screen bg-background text-foreground font-sans overflow-x-hidden">
 
-      {/* ── NAV ─────────────────────────────────────────────────────── */}
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "bg-background/95 backdrop-blur-md border-b border-border" : "bg-transparent"}`}>
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between py-4">
           <button onClick={() => scrollTo("inicio")}>
@@ -193,14 +189,12 @@ export default function App() {
         )}
       </nav>
 
-      {/* ── INÍCIO / HERO ────────────────────────────────────────────── */}
       <section id="inicio" className="relative h-screen min-h-[620px] overflow-hidden"
         style={{ background: "var(--backgreen)" }}>
         {slides.map((s, i) => (
         <div key={s.id} className="absolute inset-0 transition-opacity duration-1000"
           style={{ opacity: i === current ? 1 : 0 }}>
 
-          {/* Desktop */}
           <Image
             src={s.image}
             alt={s.headline}
@@ -208,6 +202,7 @@ export default function App() {
             className="hidden md:block"
             unoptimized
             priority={i === 0}
+           
           />
 
           <Image
@@ -219,7 +214,6 @@ export default function App() {
             priority={i === 0}
           />
 
-          {/* Mobile */}
           <Image
             src={s.imageMobile}
             alt={s.headline}
@@ -231,12 +225,11 @@ export default function App() {
         </div>
       ))}
 
-        {/* Content */}
       <div className="relative z-10 h-full flex flex-col justify-center max-w-7xl px-6 lg:px-12">
         <div style={{ minHeight: "280px", position: "relative" }}>
           {slides.map((s, i) => {
             const isActive = i === current;
-            const isSideLayout = i === 1; // slide 02 -> texto + imagem lado a lado
+            const isSideLayout = i === 1; 
 
             return (
               <div
@@ -250,13 +243,11 @@ export default function App() {
                   pointerEvents: isActive ? "auto" : "none",
                 }}
               >
-                {/* Texto (sempre presente) */}
               </div>
             );
           })}
         </div>
       </div>
-        {/* Dots */}
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex gap-3">
           {slides.map((_, i) => (
             <button key={i} onClick={() => goTo(i)}
@@ -274,7 +265,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* ── APP DOWNLOAD STRIP ───────────────────────────────────────── */}
       <div className="bg-secondary border-y border-border py-8">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-4">
@@ -296,7 +286,6 @@ export default function App() {
         </div>
       </div>
 
-      {/* ── SERVIÇOS ─────────────────────────────────────────────────── */}
       <section id="servicos" className="py-28 bg-background">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="text-center mb-16">
@@ -334,7 +323,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* ── SOBRE NÓS ────────────────────────────────────────────────── */}
       <section id="sobre" className="py-28 bg-secondary">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
@@ -360,7 +348,6 @@ export default function App() {
               </button>
             </div>
 
-            {/* Features grid */}
             <div className="grid grid-cols-2 gap-4">
               {features.map((f) => (
                 <div key={f.label}
@@ -378,7 +365,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* ── PARCEIROS ────────────────────────────────────────────────── */}
       <section id="parceiros" className="py-28 bg-background"
       style={{background: "var(--foreground)"}}>
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -434,7 +420,6 @@ export default function App() {
           </div>
       </section>
 
-      {/* ── CONTATO ──────────────────────────────────────────────────── */}
       <section id="contato" className="py-28 bg-secondary">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-20">
@@ -469,14 +454,12 @@ export default function App() {
                 ))}
               </div>
 
-              {/* Instagram */}
               <a href="https://www.instagram.com/ipseg.solucoes/" target="_blank" rel="noreferrer"
                 className="inline-flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors">
                 @ipseg.solucoes
               </a>
             </div>
 
-            {/* Form */}
             <div className="bg-card border border-border p-10 rounded-sm">
               {sent ? (
                 <div className="h-full flex flex-col items-center justify-center text-center gap-4 py-12">
@@ -544,7 +527,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* ── FOOTER ───────────────────────────────────────────────────── */}
       <div className="border-t border-border py-10 bg-background">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-8">
