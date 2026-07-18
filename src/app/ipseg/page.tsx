@@ -11,7 +11,7 @@ import { useState, useEffect, useRef } from "react";
 import {
   Menu, X, ChevronDown, Mail, Phone, MapPin, ArrowRight,
   Cloud, Brain, Users, Lightbulb, Layers, Database,
-  Smartphone, Monitor,
+  Smartphone, Monitor, ExternalLink
 } from "lucide-react";
 
 const slides = [
@@ -71,6 +71,42 @@ const partners = [
   { name: "Tcnosat", logo: "/Logo Tcnosat.png"},
 ];
 
+const clientProducts = [
+  {
+    name: "IPSEG",
+    desc: "Acesse suas câmeras com o menor delay do mercado de qualquer dispositivo.",
+    hasWebsite: true,
+    websiteUrl: "https://cloud.ipseg.com.br",
+    websiteLabel: "Acessar pelo Navegador",
+    appStoreUrl: "https://apps.apple.com",
+    playStoreUrl: "https://play.google.com",
+    color: "#3dd638",
+    icon: Cloud,
+  },
+  {
+    name: "IPSEG Track",
+    desc: "Rastreamento e monitoramento de ativos em tempo real com total precisão.",
+    hasWebsite: true,
+    websiteUrl: "https://track.ipseg.com.br",
+    websiteLabel: "Acessar pelo Navegador",
+    appStoreUrl: "https://apps.apple.com",
+    playStoreUrl: "https://play.google.com",
+    color: "#3dd638",
+    icon: Monitor,
+  },
+  {
+    name: "IPSEG Smart",
+    desc: "Segurança e automação inteligente na palma da sua mão. Monitore e automatize de onde estiver.",
+    hasWebsite: false,
+    websiteUrl: "",
+    websiteLabel: "",
+    appStoreUrl: "https://apps.apple.com",
+    playStoreUrl: "https://play.google.com",
+    color: "#3dd638",
+    icon: Smartphone,
+  },
+];
+
 function useScrolled() {
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
@@ -103,14 +139,6 @@ export default function App() {
   const scrollTo = (id: string) => {
     setMenuOpen(false);
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const handleCta = (href: string) => {
-    if (href.startsWith("http")) {
-      window.open(href, "_blank");
-    } else {
-      scrollTo(href.replace("#", ""));
-    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -265,26 +293,100 @@ export default function App() {
         </div>
       </section>
 
-      <div className="bg-secondary border-y border-border py-8">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-4">
-            <Smartphone size={22} style={{ color: "var(--primary)" }} />
-            <div>
-              <div className="text-sm font-500 text-foreground">Baixe o aplicativo IPSEG</div>
-              <div className="text-xs text-muted-foreground">iOS · Android · Android TV · Google TV</div>
-            </div>
+    <section id="clientes" className="py-15 bg-secondary border-y border-border">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="text-center mb-14">
+            <span
+              className="text-xs font-600 tracking-[0.2em] uppercase mb-4 block"
+              style={{ color: "var(--primary)" }}
+            >
+              Área do Cliente
+            </span>
+            <h2 className="font-['Playfair_Display',serif] text-4xl md:text-5xl font-700 leading-tight mb-4">
+              Já é nosso cliente? Acesse também
+            </h2>
+            <p className="text-muted-foreground max-w-lg mx-auto text-sm leading-relaxed">
+              Escolha seu produto e acesse pelo aplicativo ou pelo navegador.
+            </p>
           </div>
-          <div className="flex gap-4">
-            {["App Store", "Google Play"].map((store) => (
-              <a key={store} href="https://www.ipseg.com.br" target="_blank" rel="noreferrer"
-                className="px-5 py-2.5 rounded-sm border text-xs font-500 tracking-wide transition-all duration-200 hover:bg-primary hover:text-primary-foreground hover:border-primary"
-                style={{ borderColor: "rgba(61,214,56,0.3)", color: "var(--foreground)" }}>
-                {store}
-              </a>
+
+          <div className="grid md:grid-cols-3 gap-5">
+            {clientProducts.map((p) => (
+              <div
+                key={p.name}
+                className="bg-card border border-border rounded-sm p-8 flex flex-col gap-6 hover:border-primary transition-all duration-300 group"
+              >
+                {/* Header */}
+                <div className="flex items-center gap-4">
+                  <div
+                    className="w-12 h-12 rounded-sm flex items-center justify-center flex-shrink-0"
+                    style={{ background: "rgba(61,214,56,0.1)" }}
+                  >
+                    <p.icon size={22} style={{ color: "var(--primary)" }} />
+                  </div>
+                  <div>
+                    <div className="font-['Playfair_Display',serif] text-xl font-700 text-foreground leading-tight">
+                      {p.name}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Description */}
+                <p className="text-muted-foreground text-sm leading-relaxed flex-1">{p.desc}</p>
+
+                {/* Links */}
+                <div className="flex flex-col gap-3">
+                  {/* App Store */}
+                  <a
+                    href={p.appStoreUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-3 px-4 py-3 rounded-sm border transition-all duration-200 hover:bg-primary hover:text-primary-foreground hover:border-primary group/link"
+                    style={{ borderColor: "rgba(61,214,56,0.25)" }}
+                  >
+                    <svg viewBox="0 0 24 24" className="w-5 h-5 flex-shrink-0 fill-current" style={{ color: "var(--primary)" }}>
+                      <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                    </svg>
+                    <span className="text-sm font-500">App Store</span>
+                    <ExternalLink size={13} className="ml-auto opacity-50 group-hover/link:opacity-100" />
+                  </a>
+
+                  {/* Google Play */}
+                  <a
+                    href={p.playStoreUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-3 px-4 py-3 rounded-sm border transition-all duration-200 hover:bg-primary hover:text-primary-foreground hover:border-primary group/link"
+                    style={{ borderColor: "rgba(61,214,56,0.25)" }}
+                  >
+                    <svg viewBox="0 0 24 24" className="w-5 h-5 flex-shrink-0 fill-current" style={{ color: "var(--primary)" }}>
+                      <path d="M3.18 23.76c.3.17.64.22.98.16L14.76 12 11 8.24 3.18 23.76zm17.14-11.4-3.1-1.77-3.44 3.44 3.44 3.44 3.13-1.79c.89-.51.89-1.81-.03-2.32zM2.14.46C1.8.94 1.62 1.53 1.62 2.15v19.7c0 .62.18 1.21.52 1.69L12.9 12 2.14.46zM3.16.24L11 12l3.76-3.76L3.98.08C3.69.02 3.4.08 3.16.24z"/>
+                    </svg>
+                    <span className="text-sm font-500">Google Play</span>
+                    <ExternalLink size={13} className="ml-auto opacity-50 group-hover/link:opacity-100" />
+                  </a>
+
+                  {/* Website (only for IPSEG and IPSEG Track) */}
+                  {p.hasWebsite && (
+                    <a
+                      href={p.websiteUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex items-center gap-3 px-4 py-3 rounded-sm transition-all duration-200 group/link"
+                      style={{ background: "var(--primary)", color: "var(--primary-foreground)" }}
+                    >
+                      <Monitor size={16} className="flex-shrink-0" />
+                      <span className="text-sm font-500">{p.websiteLabel}</span>
+                      <ExternalLink size={13} className="ml-auto opacity-70 group-hover/link:opacity-100" />
+                    </a>
+                  )}
+                </div>
+              </div>
             ))}
           </div>
         </div>
-      </div>
+      </section>
+
 
       <section id="servicos" className="py-28 bg-background">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -365,7 +467,7 @@ export default function App() {
         </div>
       </section>
 
-      <section id="parceiros" className="py-28 bg-background"
+      <section id="parceiros" className="pt-28 bg-background"
       style={{background: "var(--foreground)"}}>
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="text-center mb-16">
