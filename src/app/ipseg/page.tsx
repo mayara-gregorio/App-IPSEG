@@ -293,7 +293,7 @@ export default function App() {
         </div>
       </section>
 
-    <section id="clientes" className="py-15 bg-secondary border-y border-border">
+    <section id="clientes" className="py-15 bg-foreground border-y border-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="text-center mb-14">
             <span
@@ -302,7 +302,7 @@ export default function App() {
             >
               Área do Cliente
             </span>
-            <h2 className="font-['Playfair_Display',serif] text-4xl md:text-5xl font-700 leading-tight mb-4">
+            <h2 className="font-['Playfair_Display',serif] text-4xl md:text-5xl font-700 leading-tight mb-4" style={{ color: "var(--background)" }}>
               Já é nosso cliente? Acesse também
             </h2>
             <p className="text-muted-foreground max-w-lg mx-auto text-sm leading-relaxed">
@@ -314,41 +314,35 @@ export default function App() {
             {clientProducts.map((p) => (
               <div
                 key={p.name}
-                className="bg-card border border-border rounded-sm p-8 flex flex-col gap-6 hover:border-primary transition-all duration-300 group"
+                className="border border-border rounded-sm p-8 flex flex-col gap-6 hover:border-primary transition-all duration-300 group"
               >
                 {/* Header */}
                 <div className="flex items-center gap-4">
-                  <div
-                    className="w-12 h-12 rounded-sm flex items-center justify-center flex-shrink-0"
-                    style={{ background: "rgba(61,214,56,0.1)" }}
-                  >
-                    <p.icon size={22} style={{ color: "var(--primary)" }} />
-                  </div>
                   <div>
                     <div className="font-['Playfair_Display',serif] text-xl font-700 text-foreground leading-tight">
+                      <p style={{ color: "var(--primary)" }}>
                       {p.name}
+                      </p>
                     </div>
                   </div>
                 </div>
 
                 {/* Description */}
-                <p className="text-muted-foreground text-sm leading-relaxed flex-1">{p.desc}</p>
+                <p className="text-muted-foreground text-sm leading-relaxed flex-top">{p.desc}</p>
 
                 {/* Links */}
                 <div className="flex flex-col gap-3">
+                  <div className="flex flex-row gap-3 items-center justify-center">
                   {/* App Store */}
                   <a
                     href={p.appStoreUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-3 px-4 py-3 rounded-sm border transition-all duration-200 hover:bg-primary hover:text-primary-foreground hover:border-primary group/link"
+                    className="flex-1 flex items-center group/link"
                     style={{ borderColor: "rgba(61,214,56,0.25)" }}
                   >
-                    <svg viewBox="0 0 24 24" className="w-5 h-5 flex-shrink-0 fill-current" style={{ color: "var(--primary)" }}>
-                      <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-                    </svg>
-                    <span className="text-sm font-500">App Store</span>
-                    <ExternalLink size={13} className="ml-auto opacity-50 group-hover/link:opacity-100" />
+                    <img src="/apple_loja_app.png" alt="App Store" className="h-11 w-full object-contain"/>
+                
                   </a>
 
                   {/* Google Play */}
@@ -356,15 +350,12 @@ export default function App() {
                     href={p.playStoreUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-3 px-4 py-3 rounded-sm border transition-all duration-200 hover:bg-primary hover:text-primary-foreground hover:border-primary group/link"
+                    className="flex-1 flex items-center  group/link"
                     style={{ borderColor: "rgba(61,214,56,0.25)" }}
                   >
-                    <svg viewBox="0 0 24 24" className="w-5 h-5 flex-shrink-0 fill-current" style={{ color: "var(--primary)" }}>
-                      <path d="M3.18 23.76c.3.17.64.22.98.16L14.76 12 11 8.24 3.18 23.76zm17.14-11.4-3.1-1.77-3.44 3.44 3.44 3.44 3.13-1.79c.89-.51.89-1.81-.03-2.32zM2.14.46C1.8.94 1.62 1.53 1.62 2.15v19.7c0 .62.18 1.21.52 1.69L12.9 12 2.14.46zM3.16.24L11 12l3.76-3.76L3.98.08C3.69.02 3.4.08 3.16.24z"/>
-                    </svg>
-                    <span className="text-sm font-500">Google Play</span>
-                    <ExternalLink size={13} className="ml-auto opacity-50 group-hover/link:opacity-100" />
+                    <img src="/google_play_pt.c5932540.png" alt="App Store" className="h-10 w-full object-contain"/>
                   </a>
+                  </div>
 
                   {/* Website (only for IPSEG and IPSEG Track) */}
                   {p.hasWebsite && (
@@ -395,7 +386,7 @@ export default function App() {
               style={{ color: "var(--primary)" }}>
               Serviços
             </span>
-            <h2 className=" text-4xl md:text-5xl font-700 leading-tight font-bold mb-4">
+            <h2 className="font-bold mb-4 text-4xl md:text-5xl font-700 leading-tight mb-6">
               Soluções que Transformam a Segurança
             </h2>
           </div>
