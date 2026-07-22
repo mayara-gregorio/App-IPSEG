@@ -4,7 +4,8 @@
   --font-size: 16px;
   --background: #0d1f2d;
   --backgreen: #02232C;
-  --foreground: #f4f9f4;
+  --foreground-two: #f4f9f4;
+  --foreground: #e8eae8;
   --card: #122333;
   --card-foreground: #f4f9f4;
   --popover: #122333;
@@ -12,7 +13,7 @@
   --primary: #3dd638;
   --primary-foreground: #0d1f2d;
   --secondary: #1a2e3d;
-  --secondary-foreground: #f4f9f4;
+  --secondary-foreground: #09b209;
   --muted: #1a2e3d;
   --muted-foreground: #7a9aae;
   --accent: #3dd638;
