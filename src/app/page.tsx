@@ -73,6 +73,7 @@ const partners = [
 
 const clientProducts = [
   {
+    logo: "/Logo IPSEG.svg",
     name: "IPSEG",
     desc: "Acesse suas câmeras com o menor delay do mercado de qualquer dispositivo.",
     hasWebsite: true,
@@ -82,9 +83,9 @@ const clientProducts = [
     playStoreUrl: "https://play.google.com",
     youtubeLink: true,
     color: "#3dd638",
-    icon: Cloud,
   },
   {
+    logo: "/Logo IPSEG Track.svg",
     name: "IPSEG Track",
     desc: "Rastreamento e monitoramento de ativos em tempo real com total precisão.",
     hasWebsite: true,
@@ -94,9 +95,9 @@ const clientProducts = [
     playStoreUrl: "https://play.google.com",
     youtubeLink: false,
     color: "#3dd638",
-    icon: Monitor,
   },
   {
+    logo: "/Logo IPSEG Smart.svg",
     name: "IPSEG Smart",
     desc: "Segurança e automação inteligente na palma da sua mão. Monitore e automatize de onde estiver.",
     hasWebsite: false,
@@ -106,7 +107,6 @@ const clientProducts = [
     playStoreUrl: "https://play.google.com",
     youtubeLink: false,
     color: "#3dd638",
-    icon: Smartphone,
   },
 ];
 
@@ -160,7 +160,6 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans overflow-x-hidden">
-
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "bg-background/95 backdrop-blur-md border-b border-border" : "bg-transparent"}`}>
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between py-4">
           <button onClick={() => scrollTo("inicio")}>
@@ -318,9 +317,7 @@ export default function App() {
                 <div className="flex items-center gap-4">
                   <div>
                     <div className="font-['Playfair_Display',serif] text-xl font-700 text-foreground leading-tight">
-                      <p style={{ color: "var(--primary)" }}>
-                      {p.name}
-                      </p>
+                      <img src={p.logo} alt={p.name} className="h-16 w-auto" />
                     </div>
                   </div>
                 </div>
