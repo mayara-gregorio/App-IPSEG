@@ -161,12 +161,12 @@ export default function App() {
   return (
     <div className="min-h-screen bg-background text-foreground font-sans overflow-x-hidden">
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "bg-background/95 backdrop-blur-md border-b border-border" : "bg-transparent"}`}>
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between py-4">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between py-4 bg-white">
           <button onClick={() => scrollTo("inicio")}>
             <Image src="/logoipseg.svg" alt="IPSEG" width={160} height={40} className="w-40 h-auto" />
           </button>
 
-          <ul className="hidden lg:flex items-center gap-8">
+          <ul className="hidden lg:flex gap-4">
             {navLinks.map((l) => (
               <li key={l.id}>
                 <button
@@ -311,7 +311,7 @@ export default function App() {
             {clientProducts.map((p) => (
               <div
                 key={p.name}
-                className="border border-border rounded-sm p-8 flex flex-col gap-6 hover:border-primary transition-all duration-300 group"
+                className="border bg-secondary border-border rounded-sm p-8 flex flex-col gap-6 hover:border-primary transition-all duration-300 group"
               >
                 {/* Header */}
                 <div className="flex items-center gap-4">
