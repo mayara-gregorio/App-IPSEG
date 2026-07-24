@@ -10,8 +10,7 @@ import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import {
   Menu, X, ChevronDown, Mail, Phone, MapPin, ArrowRight,
-  Cloud, Brain, Users, Lightbulb, Layers, Database,
-  Smartphone, Monitor, ExternalLink
+  Cloud, Brain, Users, Lightbulb, Layers, Database, Monitor, ExternalLink
 } from "lucide-react";
 
 const slides = [
@@ -151,7 +150,6 @@ export default function App() {
 
   const navLinks = [
     { label: "Início", id: "inicio" },
-    { label: "Área do Cliente", id: "clientes"},
     { label: "Serviços", id: "servicos" },
     { label: "Parceiros", id: "parceiros" },
     { label: "Sobre", id: "sobre" },
@@ -160,13 +158,13 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans overflow-x-hidden">
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "bg-background/95 backdrop-blur-md border-b border-border" : "bg-transparent"}`}>
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between py-4 bg-white">
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 md:bg-background/95 md:backdrop-blur-md md:border-b md:border-border ${scrolled ? "bg-background/95 backdrop-blur-md border-b border-border" : "lg:bg-transparent"}`}>
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between py-8">
           <button onClick={() => scrollTo("inicio")}>
             <Image src="/logoipseg.svg" alt="IPSEG" width={160} height={40} className="w-40 h-auto" />
           </button>
 
-          <ul className="hidden lg:flex gap-4">
+          <ul className="hidden lg:flex gap-8">
             {navLinks.map((l) => (
               <li key={l.id}>
                 <button
@@ -297,7 +295,7 @@ export default function App() {
       </section>
 
     <section id="clientes" className="py-18 bg-foreground border-y border-border">
-        <div className="max-w-7xl mx-auto lg:px-12">
+        <div className="max-w-7xl mx-auto lg:px-12 px-6">
           <div className="text-center mb-14">
             <h2 className="font-['Playfair_Display',serif] text-4xl md:text-5xl font-700 leading-tight mb-4" style={{ color: "var(--background)" }}>
               Já é nosso cliente? Acesse também
@@ -364,6 +362,13 @@ export default function App() {
                       <Monitor size={16} className="flex-shrink-0" />
                       <span className="text-sm font-500">{p.websiteLabel}</span>
                       <ExternalLink size={13} className="ml-auto opacity-70 group-hover/link:opacity-100" />
+                    </a>
+                  )}
+                  {p.youtubeLink && (
+                    <a
+                      href="https://www.youtube.com/@ipsegsolucoes"
+                    >
+                      <img src="/Logo Youtube.png" alt="YouTube"/>
                     </a>
                   )}
                 </div>
