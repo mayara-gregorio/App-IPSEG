@@ -18,7 +18,7 @@ const slides = [
     id: 0,
     headline: "Banner com a frase Soluções em Segurança Inteligente",
     cta: "Acessar Minhas Câmeras",
-    ctaHref: "https://cloud.ipseg.com.br",
+    link: "https://cloud.ipseg.com.br",
     image: "/IPSEG - Desktop.svg",
     imageMobile: "/IPSEG - Mobile.svg",
   },
@@ -26,7 +26,7 @@ const slides = [
     id: 1,
     headline: "Segurança e automação inteligente na palma da sua mão. Monitore e automatize sua casa você mesmo de onde estiver, com total praticidade e controle.",
     cta: "Saber Mais Sobre",
-    ctaHref: "#servicos",
+    link: "",
     image: "/IPSEG Smart - Desktop.svg",
     imageMobile: "/IPSEG Smart - Mobile.svg",
   },
@@ -86,7 +86,7 @@ const clientProducts = [
   {
     logo: "/Logo IPSEG Track.svg",
     name: "IPSEG Track",
-    desc: "Rastreamento e monitoramento de ativos em tempo real com total precisão.",
+    desc: "Rastreamento com precisão.",
     hasWebsite: true,
     websiteUrl: "https://track.ipseg.com.br",
     websiteLabel: "Acessar pelo Navegador",
@@ -224,15 +224,16 @@ export default function App() {
         <div key={s.id} className="absolute inset-0 transition-opacity duration-1000"
           style={{ opacity: i === current ? 1 : 0 }}>
 
-          <Image
-            src={s.image}
-            alt={s.headline}
-            fill
-            className="hidden md:block"
-            unoptimized
-            priority={i === 0}
-           
-          />
+          <a href={s.link} target="_blank" rel="noreferrer" className="relative block w-full h-full">
+            <Image
+              src={s.image}
+              alt={s.headline}
+              fill
+              className="hidden md:block"
+              unoptimized
+              priority={i === 0}
+            />
+          </a>
 
           <Image
             src={"/Fundo.png"}
@@ -366,9 +367,11 @@ export default function App() {
                   )}
                   {p.youtubeLink && (
                     <a
-                      href="https://www.youtube.com/@ipsegsolucoes"
+                      href="https://youtu.be/yDQcpZqVrB4"
+                      target="_blank"
+                      rel="noreferrer"
                     >
-                      <img src="/Logo Youtube.png" alt="YouTube"/>
+                      <img src="/Logo Youtube.svg" alt="YouTube"/>
                     </a>
                   )}
                 </div>
