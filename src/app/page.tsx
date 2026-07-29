@@ -7,7 +7,7 @@ import "../styles/index.css"
 import "../styles/tailwind.css"
 
 import Image from "next/image";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, type CSSProperties, type FormEvent } from "react";
 import {
   Menu, X, ChevronDown, Mail, Phone, MapPin, ArrowRight,
   Cloud, Brain, Users, Lightbulb, Layers, Database, Monitor, ExternalLink
@@ -143,7 +143,7 @@ export default function App() {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSent(true);
   };
@@ -316,7 +316,7 @@ export default function App() {
                 <div className="flex items-center gap-4">
                   <div>
                     <div className="font-['Playfair_Display',serif] text-xl font-700 text-foreground leading-tight">
-                      <img src={p.logo} alt={p.name} className="h-16 w-auto" />
+                      <Image src={p.logo} alt={p.name} width={96} height={64} className="h-16 w-auto" />
                     </div>
                   </div>
                 </div>
@@ -335,8 +335,8 @@ export default function App() {
                     className="flex-1 flex items-center group/link"
                     style={{ borderColor: "rgba(61,214,56,0.25)" }}
                   >
-                    <img src="/apple_loja_app.png" alt="App Store" className="h-11 w-full object-contain"/>
-                
+                    <Image src="/apple_loja_app.png" alt="App Store" width={120} height={44} className="h-11 w-full object-contain" />
+                  
                   </a>
 
                   {/* Google Play */}
@@ -347,7 +347,7 @@ export default function App() {
                     className="flex-1 flex items-center  group/link"
                     style={{ borderColor: "rgba(61,214,56,0.25)" }}
                   >
-                    <img src="/google_play_pt.c5932540.png" alt="App Store" className="h-10 w-full object-contain"/>
+                    <Image src="/google_play_pt.c5932540.png" alt="Google Play" width={120} height={40} className="h-10 w-full object-contain" />
                   </a>
                   </div>
 
@@ -370,9 +370,8 @@ export default function App() {
                       href="https://youtu.be/yDQcpZqVrB4"
                       target="_blank"
                       rel="noreferrer"
-                      className="flex items-center group/link"
                     >
-                      <Image src="/Logo Youtube.svg" alt="YouTube" width={300} height={100} className="w-full h-auto"/>
+                      <Image src="/Logo Youtube.svg" alt="YouTube" width={88} height={24} className="h-auto w-auto" />
                     </a>
                   )}
                 </div>
@@ -505,7 +504,7 @@ export default function App() {
               {features.map((f) => (
                 <div key={f.label}
                   className="bg-card border border-border p-6 rounded-sm flex items-start gap-4 hover:border-primary transition-colors duration-300"
-                  style={{ "--tw-border-opacity": "1" } as React.CSSProperties}>
+                  style={{ "--tw-border-opacity": "1" } as CSSProperties}>
                   <div className="w-9 h-9 rounded-sm flex items-center justify-center flex-shrink-0"
                     style={{ background: "rgba(61,214,56,0.1)" }}>
                     <f.icon size={16} style={{ color: "var(--primary)" }} />
@@ -630,7 +629,7 @@ export default function App() {
       <div className="border-t border-border py-10 bg-background">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-8">
-            <Image src="/logoipseg.svg" alt="IPSEG" width={120} height={32} className="h-8 w-auto object-contain" />
+            <Image src="/logoipseg.svg" alt="IPSEG" width={120} height={32} className="h-8 w-auto object-contain" loading="eager" />
             <div className="flex flex-wrap justify-center gap-8">
               {navLinks.map((l) => (
                 <button key={l.id} onClick={() => scrollTo(l.id)}
