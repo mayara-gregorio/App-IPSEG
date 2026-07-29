@@ -224,7 +224,7 @@ export default function App() {
         <div key={s.id} className="absolute inset-0 transition-opacity duration-1000"
           style={{ opacity: i === current ? 1 : 0 }}>
 
-          <a href={s.link} target="_blank" rel="noreferrer" className="relative block w-full h-full">
+          <a href={s.link} target="_blank" rel="noreferrer" className="absolute block w-full h-full">
             <Image
               src={s.image}
               alt={s.headline}
@@ -370,8 +370,9 @@ export default function App() {
                       href="https://youtu.be/yDQcpZqVrB4"
                       target="_blank"
                       rel="noreferrer"
+                      className="flex items-center group/link"
                     >
-                      <img src="/Logo Youtube.svg" alt="YouTube"/>
+                      <Image src="/Logo Youtube.svg" alt="YouTube" width={300} height={100} className="w-full h-auto"/>
                     </a>
                   )}
                 </div>
