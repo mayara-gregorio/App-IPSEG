@@ -19,7 +19,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "IPSEG",
+  title: "IPSEG | Segurança Inteligente",
+  description: "Soluções de automonitoramento, segurança e automação para parceiros e clientes IPSEG.",
+  keywords: ["IPSEG", "segurança", "câmeras", "automonitoramento", "automação"],
+  metadataBase: new URL("https://www.ipseg.com.br"),
 };
 
 export default function RootLayout({
@@ -29,7 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="pt-BR"
       className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, lato.variable, "font-sans")}
     >
       <body className="min-h-full flex flex-col">{children}</body>
