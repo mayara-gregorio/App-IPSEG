@@ -224,13 +224,14 @@ export default function App() {
         <div key={s.id} className="absolute inset-0 transition-opacity duration-1000"
           style={{ opacity: i === current ? 1 : 0 }}>
 
-          <a href={s.link} target="_blank" rel="noreferrer" className="absolute block w-full h-full">
+          <a href={s.link} target="_blank" rel="noreferrer" className="absolute  w-full h-full">
             <Image
               src={s.image}
               alt={s.headline}
               fill
               unoptimized
               priority={i === 0}
+              className="object-contain hidden sm:block"
             />
           </a>
 
@@ -239,6 +240,15 @@ export default function App() {
             alt={s.headline}
             fill
             className="object-cover"
+            unoptimized
+            priority={i === 0}
+          />
+
+          <Image
+            src={s.imageMobile}
+            alt={s.headline}
+            fill
+            className="object-cover sm:hidden "
             unoptimized
             priority={i === 0}
           />
