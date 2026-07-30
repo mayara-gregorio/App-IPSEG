@@ -20,7 +20,7 @@ const slides = [
     cta: "Acessar Minhas Câmeras",
     link: "https://cloud.ipseg.com.br",
     image: "/IPSEG - Desktop.svg",
-    imageMobile: "/IPSEG - Mobile.svg",
+    imageMobile: "/IPSEG - Mobile.png",
   },
   {
     id: 1,
@@ -28,7 +28,7 @@ const slides = [
     cta: "Saber Mais Sobre",
     link: "",
     image: "/IPSEG Smart - Desktop.svg",
-    imageMobile: "/IPSEG Smart - Mobile.svg",
+    imageMobile: "/IPSEG Smart - Mobile.png",
   },
 ];
 
@@ -218,20 +218,20 @@ export default function App() {
         )}
       </nav>
 
-      <section id="inicio" className="relative h-[75vh] min-h-[420px] md:h-screen md:min-h-[620px] overflow-hidden"
-        style={{ background: "var(--backgreen)" }}>
+      <section id="inicio" className="relative lg:h-screen min-h-[620px] overflow-hidden "
+        style={{ background: "var(--backgreen)"}}>
         {slides.map((s, i) => (
         <div key={s.id} className="absolute inset-0 transition-opacity duration-1000"
           style={{ opacity: i === current ? 1 : 0 }}>
 
-          <a href={s.link} target="_blank" rel="noreferrer" className="absolute  w-full h-full">
+          <a href={s.link} target="_blank" rel="noreferrer" className="absolute w-full h-full">
             <Image
               src={s.image}
               alt={s.headline}
               fill
               unoptimized
               priority={i === 0}
-              className="object-contain hidden sm:block"
+              className="object-contain hidden md:block"
             />
           </a>
 
@@ -244,14 +244,16 @@ export default function App() {
             priority={i === 0}
           />
 
-          <Image
-            src={s.imageMobile}
-            alt={s.headline}
-            fill
-            className="object-contain sm:hidden "
-            unoptimized
-            priority={i === 0}
-          />
+           <div className="absolute inset-x-3 top-24 bottom-10 md:hidden">
+            <Image
+              src={s.imageMobile}
+              alt={s.headline}
+              fill
+              className="object-contain object-top"
+              unoptimized
+              priority={i === 0}
+            />
+          </div>
 
         </div>
       ))}
