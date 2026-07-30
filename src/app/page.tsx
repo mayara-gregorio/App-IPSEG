@@ -218,7 +218,7 @@ export default function App() {
         )}
       </nav>
 
-      <section id="inicio" className="relative h-screen md:min-h-[620px] overflow-hidden"
+      <section id="inicio" className="relative h-[75vh] min-h-[420px] md:h-screen md:min-h-[620px] overflow-hidden"
         style={{ background: "var(--backgreen)" }}>
         {slides.map((s, i) => (
         <div key={s.id} className="absolute inset-0 transition-opacity duration-1000"
