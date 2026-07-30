@@ -292,6 +292,7 @@ export default function App() {
               }} />
           ))}
         </div>
+        
 
         <div className="absolute bottom-10 right-12 hidden md:flex flex-col items-center gap-2 text-muted-foreground">
           <ChevronDown size={16} className="animate-bounce" />
