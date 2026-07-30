@@ -63,8 +63,8 @@ const features = [
 ];
 
 const partners = [
-  { name: "Diney Infor", logo: "/Logo Diney Infor.png"},
-  { name: "Infoplus Fiber", logo: "/Logo Infoplus.png"},
+  { name: "Diney Infor", logo: "/Logo DINEY INFOR.png"},
+  { name: "Infoplus Fiber", logo: "/Logo INFOPLUS.png"},
   { name: "RR Informática", logo: "/Logo RR.png"},
   { name: "SOF Telecom", logo: "/Logo SOF Telecom.png"},
   { name: "Tcnosat", logo: "/Logo Tcnosat.png"},
