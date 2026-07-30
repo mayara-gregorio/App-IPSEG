@@ -63,7 +63,7 @@ const features = [
 ];
 
 const partners = [
-  { name: "Diney Infor", logo: "/Logo DINEY INFOR.png"},
+  { name: "Diney Infor", logo: "/Logo_DINEY_INFOR.png"},
   { name: "Infoplus Fiber", logo: "/Logo INFOPLUS.png"},
   { name: "RR Informática", logo: "/Logo RR.png"},
   { name: "SOF Telecom", logo: "/Logo SOF Telecom.png"},
@@ -218,7 +218,7 @@ export default function App() {
         )}
       </nav>
 
-      <section id="inicio" className="relative h-screen min-h-[620px] overflow-hidden"
+      <section id="inicio" className="relative h-screen md:min-h-[620px] overflow-hidden"
         style={{ background: "var(--backgreen)" }}>
         {slides.map((s, i) => (
         <div key={s.id} className="absolute inset-0 transition-opacity duration-1000"
@@ -229,7 +229,6 @@ export default function App() {
               src={s.image}
               alt={s.headline}
               fill
-              className="hidden md:block"
               unoptimized
               priority={i === 0}
             />
@@ -244,14 +243,6 @@ export default function App() {
             priority={i === 0}
           />
 
-          <Image
-            src={s.imageMobile}
-            alt={s.headline}
-            fill
-            className="md:hidden sm:block"
-            unoptimized
-            priority={i === 0}
-          />
         </div>
       ))}
 
