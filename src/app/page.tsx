@@ -248,7 +248,7 @@ export default function App() {
             src={s.imageMobile}
             alt={s.headline}
             fill
-            className="object-cover sm:hidden "
+            className="object-contain sm:hidden "
             unoptimized
             priority={i === 0}
           />
