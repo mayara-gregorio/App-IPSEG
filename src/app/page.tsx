@@ -239,9 +239,8 @@ export default function App() {
             src={"/Fundo.png"}
             alt={s.headline}
             fill
-            className="object-cover max-w-[100px] max-h-[100px]"
+            className="object-cover"
             unoptimized
-            priority={i === 0}
           />
 
            <div className="absolute inset-x-3 top-24 bottom-10 md:hidden">
