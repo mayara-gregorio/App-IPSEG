@@ -78,8 +78,8 @@ const clientProducts = [
     hasWebsite: true,
     websiteUrl: "https://cloud.ipseg.com.br",
     websiteLabel: "Acessar pelo Navegador",
-    appStoreUrl: "https://apps.apple.com",
-    playStoreUrl: "https://play.google.com",
+    appStoreUrl: "https://apps.apple.com/us/app/ipseg/id6744657353",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=fc.ipseg.me&hl=pt_BR",
     youtubeLink: true,
     color: "#3dd638",
   },
@@ -88,10 +88,10 @@ const clientProducts = [
     name: "IPSEG Track",
     desc: "Rastreamento com precisão.",
     hasWebsite: true,
-    websiteUrl: "https://track.ipseg.com.br",
+    websiteUrl: "https://fulltrackapp.com/emp/ipseg",
     websiteLabel: "Acessar pelo Navegador",
-    appStoreUrl: "https://apps.apple.com",
-    playStoreUrl: "https://play.google.com",
+    appStoreUrl: "https://apps.apple.com/us/app/ipseg-track/id6778173651",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=br.com.ipsegtracker&hl=pt_BR",
     youtubeLink: false,
     color: "#3dd638",
   },
@@ -102,8 +102,8 @@ const clientProducts = [
     hasWebsite: false,
     websiteUrl: "",
     websiteLabel: "",
-    appStoreUrl: "https://apps.apple.com",
-    playStoreUrl: "https://play.google.com",
+    appStoreUrl: "https://apps.apple.com/us/app/ipseg-smart/id6756120938",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=br.com.ipsegsmart.ipsegsmart.mobile&hl=pt_BR",
     youtubeLink: false,
     color: "#3dd638",
   },
@@ -218,7 +218,7 @@ export default function App() {
         )}
       </nav>
 
-      <section id="inicio" className="relative lg:h-screen min-h-[620px] overflow-hidden "
+      <section id="inicio" className="relative lg:h-screen md:min-h-[620px] sm:min-h-[620px] overflow-hidden "
         style={{ background: "var(--backgreen)"}}>
         {slides.map((s, i) => (
         <div key={s.id} className="absolute inset-0 transition-opacity duration-1000"
@@ -239,7 +239,7 @@ export default function App() {
             src={"/Fundo.png"}
             alt={s.headline}
             fill
-            className="object-cover"
+            className="object-cover max-w-[100px] max-h-[100px]"
             unoptimized
             priority={i === 0}
           />
