@@ -27,7 +27,7 @@ const slides = [
     headline: "Segurança e automação inteligente na palma da sua mão. Automatize e Monitore sua casa você mesmo de onde estiver, com total praticidade e controle.",
     cta: "Saber Mais Sobre",
     link: "",
-    image: "/IPSEG Smart - Desktop.svg",
+    image: "/IPSEG Smart - Desktop.png",
     imageMobile: "/IPSEG Smart - Mobile.png",
   },
 ];
