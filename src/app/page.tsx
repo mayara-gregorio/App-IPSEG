@@ -301,7 +301,7 @@ export default function App() {
     <section id="clientes" className="py-18 bg-foreground border-y border-border">
         <div className="max-w-7xl mx-auto lg:px-12 px-6">
           <div className="text-center mb-14">
-            <h2 className="font-['Playfair_Display',serif] text-4xl md:text-5xl font-700 leading-tight mb-4" style={{ color: "var(--background)" }}>
+            <h2 className="font-bold text-4xl md:text-5xl font-700 leading-tight mb-4" style={{ color: "var(--background)" }}>
               Já é nosso cliente? Acesse também
             </h2>
             <p className="text-muted-foreground max-w-lg mx-auto text-sm leading-relaxed">
@@ -318,7 +318,7 @@ export default function App() {
                 {/* Header */}
                 <div className="flex items-center gap-4">
                   <div>
-                    <div className="font-['Playfair_Display',serif] text-xl font-700 text-foreground leading-tight">
+                    <div className="font-bold text-xl font-700 text-foreground leading-tight">
                       <Image src={p.logo} alt={p.name} width={96} height={64} className="h-16 w-auto" />
                     </div>
                   </div>
@@ -405,7 +405,7 @@ export default function App() {
                   style={{ background: "rgba(61,214,56,0.1)" }}>
                   <s.icon size={22} style={{ color: "var(--primary)" }} />
                 </div>
-                <h3 className="font-['Playfair_Display',serif] text-xl font-600 mb-4">{s.title}</h3>
+                <h3 className="font-bold text-xl font-600 mb-4">{s.title}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed mb-6">{s.desc}</p>
                 <ul className="flex flex-col gap-2">
                   {s.features.map((f) => (
@@ -430,11 +430,11 @@ export default function App() {
               style={{ color: "var(--primary)" }}>
               Parceiros IPSEG
             </span>
-            <h2 className="font-['Playfair_Display',serif] text-4xl md:text-5xl font-700 leading-tight mb-4"
+            <h2 className="font-bold text-4xl md:text-5xl font-700 leading-tight mb-4"
             style={{ color: "var(--background)" }}>
               Quem Cresce com a Gente
             </h2>
-            <p className="text-muted-foreground max-w-lg mx-auto text-sm leading-relaxed">
+            <p className="text-background max-w-lg mx-auto text-sm leading-relaxed">
               Provedores de internet e integradores de segurança que escolheram a IPSEG para expandir seu portfólio e gerar novas receitas.
             </p>
           </div>
@@ -462,7 +462,7 @@ export default function App() {
               style={{ color: "var(--primary)" }}>
               Para Provedores e Integradores
             </span>
-            <h3 className="font-['Playfair_Display',serif] text-3xl md:text-4xl font-700 mb-4">
+            <h3 className="font-bold text-3xl md:text-4xl font-700 mb-4">
               Adicione a IPSEG ao Seu Portfólio
             </h3>
             <p className="text-muted-foreground max-w-md mx-auto mb-8 text-sm leading-relaxed">
@@ -485,14 +485,14 @@ export default function App() {
                 style={{ color: "var(--primary)" }}>
                 Sobre Nós
               </span>
-              <h2 className="font-['Playfair_Display',serif] text-4xl md:text-5xl font-700 leading-tight mb-4"
+              <h2 className="font-bold text-4xl md:text-5xl font-700 leading-tight mb-4"
               style={{ color: "var(--background)" }}>
                 Profissionalismo e Confiança
               </h2>
-              <p className="text-muted-foreground leading-relaxed mb-6">
+              <p className="text-background leading-relaxed mb-6">
                 A IPSEG é uma empresa especializada em soluções de automonitoramento inteligente. ​​Nossa missão é oferecer soluções inovadoras de segurança, garantindo praticidade para empresas, condomínios e cidades.
               </p>
-              <p className="text-muted-foreground leading-relaxed mb-10">
+              <p className="text-background leading-relaxed mb-10">
                 Seja um parceiro IPSEG e adicione sistemas robustos ao seu portfólio e gere novas receitas.
               </p>
               <button
@@ -569,7 +569,7 @@ export default function App() {
                     style={{ background: "var(--primary)", color: "var(--primary-foreground)" }}>
                     ✓
                   </div>
-                  <h3 className="font-['Playfair_Display',serif] text-2xl font-700">Mensagem enviada!</h3>
+                  <h3 className="font-bold text-2xl font-700">Mensagem enviada!</h3>
                   <p className="text-muted-foreground text-sm max-w-xs">
                     Recebemos seu contato. Nossa equipe retornará em breve com informações sobre a parceria.
                   </p>
