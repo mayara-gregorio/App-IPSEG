@@ -428,7 +428,7 @@ export default function App() {
           <div className="text-center mb-16">
             <span className="text-xs font-600 tracking-[0.2em] uppercase mb-4 block"
               style={{ color: "var(--primary)" }}>
-              Parceiros IPSEG
+              <b>Parceiros IPSEG</b>
             </span>
             <h2 className="font-bold text-4xl md:text-5xl font-700 leading-tight mb-4"
             style={{ color: "var(--background)" }}>
@@ -483,7 +483,7 @@ export default function App() {
             <div>
               <span className="text-xs font-600 tracking-[0.2em] uppercase mb-4 block"
                 style={{ color: "var(--primary)" }}>
-                Sobre Nós
+                <b>Sobre Nós</b>
               </span>
               <h2 className="font-bold text-4xl md:text-5xl font-700 leading-tight mb-4"
               style={{ color: "var(--background)" }}>
