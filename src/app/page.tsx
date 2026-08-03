@@ -12,6 +12,7 @@ import {
   Menu, X, ChevronDown, Mail, Phone, MapPin, ArrowRight,
   Cloud, Brain, Users, Lightbulb, Layers, Database, Monitor, ExternalLink
 } from "lucide-react";
+import ContactForm from "../components/contact-form"
 
 const slides = [
   {
@@ -122,7 +123,6 @@ function useScrolled() {
 export default function App() {
   const [current, setCurrent] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [formData, setFormData] = useState({ nome: "", telefone: "", email: "", mensagem: "" });
   const [sent, setSent] = useState(false);
   const scrolled = useScrolled();
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -143,10 +143,6 @@ export default function App() {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setSent(true);
-  };
 
   const navLinks = [
     { label: "Início", id: "inicio" },
@@ -579,50 +575,7 @@ export default function App() {
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-                  <h3 className="font-['Playfair_Display',serif] text-2xl font-700 mb-1">
-                    Envie sua mensagem
-                  </h3>
-
-                  {[
-                    { id: "nome", label: "Nome", type: "text", placeholder: "Seu nome completo" },
-                    { id: "telefone", label: "Telefone", type: "tel", placeholder: "(11) 9 9999-9999" },
-                    { id: "email", label: "E-mail", type: "email", placeholder: "seu@email.com.br" },
-                  ].map((f) => (
-                    <div key={f.id} className="flex flex-col gap-1.5">
-                      <label htmlFor={f.id}
-                        className="text-xs uppercase tracking-wide text-muted-foreground">
-                        {f.label}
-                      </label>
-                      <input
-                        id={f.id} type={f.type} required placeholder={f.placeholder}
-                        value={formData[f.id as keyof typeof formData]}
-                        onChange={(e) => setFormData({ ...formData, [f.id]: e.target.value })}
-                        className="bg-secondary border border-border rounded-sm px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
-                      />
-                    </div>
-                  ))}
-
-                  <div className="flex flex-col gap-1.5">
-                    <label htmlFor="mensagem"
-                      className="text-xs uppercase tracking-wide text-muted-foreground">
-                      Mensagem
-                    </label>
-                    <textarea
-                      id="mensagem" required rows={4}
-                      placeholder="Conte sobre seu negócio e como podemos ajudar..."
-                      value={formData.mensagem}
-                      onChange={(e) => setFormData({ ...formData, mensagem: e.target.value })}
-                      className="bg-secondary border border-border rounded-sm px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors resize-none"
-                    />
-                  </div>
-
-                  <button type="submit"
-                    className="mt-2 inline-flex items-center justify-center gap-3 px-8 py-3.5 text-sm font-500 rounded-sm transition-all duration-200 hover:gap-5"
-                    style={{ background: "var(--primary)", color: "var(--primary-foreground)" }}>
-                    Enviar <ArrowRight size={16} />
-                  </button>
-                </form>
+                <ContactForm/>
               )}
             </div>
           </div>
