@@ -502,7 +502,7 @@ export default function App() {
             <div className="grid grid-cols-2 gap-4">
               {features.map((f) => (
                 <div key={f.label}
-                  className="bg-card border border-border p-6 rounded-sm flex items-start sm:flex-col md:flex-row gap-4 hover:border-primary transition-colors duration-300"
+                  className="bg-card border border-border p-6 rounded-sm flex items-start flex-col md:flex-row gap-4 hover:border-primary transition-colors duration-300"
                   style={{ "--tw-border-opacity": "1" } as CSSProperties}>
                   <div className="w-9 h-9 rounded-sm flex items-center justify-center flex-shrink-0"
                     style={{ background: "rgba(61,214,56,0.1)" }}>
