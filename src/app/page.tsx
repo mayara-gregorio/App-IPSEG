@@ -475,7 +475,7 @@ export default function App() {
 
       <section id="sobre" className="py-28 bg-foreground">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="grid lg:grid-cols-2 gap-20 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <span className="text-xs font-600 tracking-[0.2em] uppercase mb-4 block"
                 style={{ color: "var(--primary)" }}>
