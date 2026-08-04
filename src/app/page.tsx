@@ -27,7 +27,7 @@ const slides = [
     id: 1,
     headline: "Segurança e automação inteligente na palma da sua mão. Automatize e Monitore sua casa você mesmo de onde estiver, com total praticidade e controle.",
     cta: "Saber Mais Sobre",
-    link: "",
+    link: "#contato",
     image: "/IPSEG Smart - Desktop.png",
     imageMobile: "/IPSEG Smart - Mobile.png",
   },
@@ -221,36 +221,74 @@ export default function App() {
       >
         {slides.map((s, i) => (
         <div key={s.id} className="absolute inset-0 transition-opacity duration-1000"
-          style={{ opacity: i === current ? 1 : 0 }}>
-
-          <a href={s.link} target="_blank" rel="noreferrer" className="absolute w-full h-full">
-            <Image
-              src={s.image}
-              alt={s.headline}
-              fill
-              unoptimized
-              priority={i === 0}
-              className="object-contain hidden md:block"
-            />
-          </a>
+          style={{ opacity: i === current ? 1 : 0, pointerEvents: i === current ? "auto" : "none"}}>
 
           <Image
             src={"/Fundo.png"}
             alt={s.headline}
             fill
-            className="object-cover"
+            className="object-cover pointer-events-none"
             unoptimized
           />
 
-           <div className="absolute inset-x-3 top-24 bottom-10 md:hidden">
-            <Image
-              src={s.imageMobile}
-              alt={s.headline}
-              fill
-              className="object-contain"
-              unoptimized
-              priority={i === 0}
-            />
+          {s.link ? (
+            <a
+              href={s.link}
+              target={s.link.startsWith("http") ? "_blank" : undefined}
+              rel={s.link.startsWith("http") ? "noreferrer" : undefined}
+              className="absolute inset-0 z-20"
+            >
+              <Image
+                src={s.image}
+                alt={s.headline}
+                fill
+                unoptimized
+                priority={i === 0}
+                className="object-contain hidden md:block"
+              />
+            </a>
+          ) : (
+            <div className="absolute inset-0">
+              <Image
+                src={s.image}
+                alt={s.headline}
+                fill
+                unoptimized
+                priority={i === 0}
+                className="object-contain hidden md:block"
+              />
+            </div>
+          )}
+
+          <div className="absolute inset-x-3 top-24 bottom-10 md:hidden">
+            {s.link ? (
+              <a
+                href={s.link}
+                target={s.link.startsWith("http") ? "_blank" : undefined}
+                rel={s.link.startsWith("http") ? "noreferrer" : undefined}
+                className="absolute inset-0 z-20"
+              >
+                <Image
+                  src={s.imageMobile}
+                  alt={s.headline}
+                  fill
+                  className="object-contain"
+                  unoptimized
+                  priority={i === 0}
+                />
+              </a>
+            ) : (
+              <div className="absolute inset-0">
+                <Image
+                  src={s.imageMobile}
+                  alt={s.headline}
+                  fill
+                  className="object-contain"
+                  unoptimized
+                  priority={i === 0}
+                />
+              </div>
+            )}
           </div>
 
         </div>
@@ -290,8 +328,6 @@ export default function App() {
               }} />
           ))}
         </div>
-        
-
         <div className="absolute bottom-10 right-12 hidden md:flex flex-col items-center gap-2 text-muted-foreground">
           <ChevronDown size={16} className="animate-bounce" />
         </div>
