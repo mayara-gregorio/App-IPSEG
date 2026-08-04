@@ -558,26 +558,27 @@ export default function App() {
               </a>
             </div>
 
-            <div className="bg-card border border-border p-10 rounded-sm">
+            <div className="bg-background border border-black/8 p-10 rounded-sm shadow-sm">
               {sent ? (
                 <div className="h-full flex flex-col items-center justify-center text-center gap-4 py-12">
                   <div className="w-14 h-14 rounded-full flex items-center justify-center text-2xl font-700"
                     style={{ background: "var(--primary)", color: "var(--primary-foreground)" }}>
                     ✓
                   </div>
-                  <h3 className="font-bold text-2xl font-700">Mensagem enviada!</h3>
+                  <h3 className="font-['Playfair_Display',serif] text-2xl font-700 text-foreground">
+                    Mensagem enviada!
+                  </h3>
                   <p className="text-muted-foreground text-sm max-w-xs">
-                    Recebemos seu contato. Nossa equipe retornará em breve com informações sobre a parceria.
+                    Recebemos seu contato. Nossa equipe retornará em breve.
                   </p>
                   <button onClick={() => setSent(false)} className="mt-4 text-sm underline"
                     style={{ color: "var(--primary)" }}>
                     Enviar nova mensagem
                   </button>
                 </div>
-              ) : (
-                <ContactForm/>
-              )}
-            </div>
+              ) : ( <ContactForm onSuccess={() => setSent(true)}/> )}
+              </div>
+            <div/>
           </div>
         </div>
       </section>

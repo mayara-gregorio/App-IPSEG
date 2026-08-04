@@ -5,16 +5,20 @@ import { useState } from "react";
 
 type Status = "idle" | "loading" | "success" | "error";
 
-export default function ContactForm() {
+interface ContactFormProps {
+  onSuccess?: () => void;
+}
+
+export default function ContactForm({ onSuccess }: ContactFormProps) {
   const [formData, setFormData] = useState({ nome: "", telefone: "", email: "", mensagem: "" });
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState<string | null>(null);
- 
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setStatus("loading");
     setMessage(null);
- 
+
     try {
       const res = await fetch("/api/send", {
         method: "POST",
@@ -27,10 +31,11 @@ export default function ContactForm() {
       if (!res.ok) {
         throw new Error(payload?.error || "Falha no envio");
       }
- 
+
       setStatus("success");
       setFormData({ nome: "", telefone: "", email: "", mensagem: "" });
       setMessage("Mensagem enviada com sucesso!");
+      onSuccess?.();
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : "Falha no envio";
       console.error(errorMessage);
