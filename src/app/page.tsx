@@ -214,8 +214,11 @@ export default function App() {
         )}
       </nav>
 
-      <section id="inicio" className="relative lg:h-screen md:min-h-[620px] sm:min-h-[620px] overflow-hidden "
-        style={{ background: "var(--backgreen)"}}>
+      <section
+        id="inicio"
+        className="relative min-h-[420px] max-h-[550px] sm:min-h-[500px] sm:max-h-[620px] md:h-screen lg:max-h-none overflow-hidden"
+        style={{ background: "var(--backgreen)" }}
+      >
         {slides.map((s, i) => (
         <div key={s.id} className="absolute inset-0 transition-opacity duration-1000"
           style={{ opacity: i === current ? 1 : 0 }}>
@@ -244,7 +247,7 @@ export default function App() {
               src={s.imageMobile}
               alt={s.headline}
               fill
-              className="object-contain object-top"
+              className="object-contain"
               unoptimized
               priority={i === 0}
             />
