@@ -1,11 +1,5 @@
 "use client"
 
-import "../styles/theme.css"
-import "../styles/fonts.css"
-import "../styles/globals.css"
-import "../styles/index.css"
-import "../styles/tailwind.css"
-
 import Image from "next/image";
 import { useState, useEffect, useRef, type CSSProperties, type FormEvent } from "react";
 import {

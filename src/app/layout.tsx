@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Lato } from "next/font/google";
+import "../styles/theme.css";
+import "../styles/fonts.css";
+import "../styles/globals.css";
+import "../styles/index.css";
+import "../styles/tailwind.css";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
