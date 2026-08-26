@@ -470,14 +470,17 @@ export default function App() {
 
           <div className="grid grid-cols-2 md:grid-cols-5 gap-px bg-foreground mb-16">
             {partners.map((p) => (
-              <div key={p.name}
-                className="bg-foreground p-10 flex flex-col items-center text-center gap-4 hover:bg-foreground transition-colors duration-300 cursor-default">
-                <div className="relative w-full h-16">
+              <div
+                key={p.name}
+                className="bg-foreground p-10 flex flex-col items-center text-center gap-4 hover:bg-foreground transition-colors duration-300 cursor-default"
+              >
+                <div className="w-full h-16 flex items-center justify-center">
                   <Image
                     src={p.logo}
                     alt={p.name}
-                    fill
-                    className="object-contain w-full h-full"
+                    width={200}
+                    height={64}
+                    className="max-w-full max-h-full w-auto h-auto object-contain"
                     unoptimized
                   />
                 </div>
